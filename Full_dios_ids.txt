@@ -1,0 +1,149 @@
+function main(workbook: ExcelScript.Workbook) {
+    let full_list = workbook.getWorksheet("Full_list_dios_ids");
+    let pbs = workbook.getWorksheet("PBS_pEVAC");
+    let pv = workbook.getWorksheet("PV_genes");
+    let hat0 = workbook.getWorksheet("HA_T0");
+    let ha = workbook.getWorksheet("HA");
+    let nat0 = workbook.getWorksheet("NA_T0");
+    let na = workbook.getWorksheet("NA");
+    let m2t0 = workbook.getWorksheet("M2_T0");
+    let m2 = workbook.getWorksheet("M2");
+    let strings = workbook.getWorksheet("Strings");
+
+
+    // Delete range A2:C1000 on reducedIDs
+    full_list.getRange("A2:C1000").delete(ExcelScript.DeleteShiftDirection.left);
+
+
+    // Paste to range A2 on full_list from range A2:B500 on pbs
+    full_list.getRange("A2").copyFrom(pbs.getRange("A2:B500"), ExcelScript.RangeCopyType.values, false, false);
+    // Toggle auto filter on full_list
+    full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+    // Apply values filter on full_list
+    full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+    // Delete range 2:2000 on full_list
+    full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+    // Clear auto filter on full_list
+    full_list.getAutoFilter().clearCriteria();
+
+
+    // Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range A1 on full_list from range A2:A500 on hat0
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(hat0.getRange("A2:A500"), ExcelScript.RangeCopyType.values, false, false);
+    // Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range A1 on full_list from range D2:D500 on hat0
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(hat0.getRange("D2:D500"), ExcelScript.RangeCopyType.values, false, false);
+    // Toggle auto filter on full_list
+    full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+    // Apply values filter on full_list
+    full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+    // Delete range 2:2000 on full_list
+    full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+    // Clear auto filter on full_list
+    full_list.getAutoFilter().clearCriteria();
+
+    // Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range A1 on full_list from range A3:A500 on ha
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(ha.getRange("A3:A500"), ExcelScript.RangeCopyType.values, false, false);
+    // Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range A1 on full_list from range D3:D500 on ha
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(ha.getRange("D3:D500"), ExcelScript.RangeCopyType.values, false, false);
+    // Toggle auto filter on full_list
+    full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+    // Apply values filter on full_list
+    full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+    // Delete range 2:2000 on full_list
+    full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+    // Clear auto filter on full_list
+    full_list.getAutoFilter().clearCriteria();
+
+    // Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range A1 on full_list from range A2:A500 on nat0
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(nat0.getRange("A2:A500"), ExcelScript.RangeCopyType.values, false, false);
+    // Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range A1 on full_list from range D2:D500 on nat0
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(nat0.getRange("D2:D500"), ExcelScript.RangeCopyType.values, false, false);
+    // Toggle auto filter on full_list
+    full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+    // Apply values filter on full_list
+    full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+    // Delete range 2:2000 on full_list
+    full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+    // Clear auto filter on full_list
+    full_list.getAutoFilter().clearCriteria();
+
+
+    // Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range A1 on full_list from range A3:A500 on na
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(na.getRange("A3:A500"), ExcelScript.RangeCopyType.values, false, false);
+    // Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range A1 on full_list from range D3:D500 on na
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(na.getRange("D3:D500"), ExcelScript.RangeCopyType.values, false, false);
+    // Toggle auto filter on full_list
+    full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+    // Apply values filter on full_list
+    full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+    // Delete range 2:2000 on full_list
+    full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+    // Clear auto filter on full_list
+    full_list.getAutoFilter().clearCriteria();
+
+
+    // Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range A1 on full_list from range A2:A500 on m2t0
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(m2t0.getRange("A2:A500"), ExcelScript.RangeCopyType.values, false, false);
+    // Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range A1 on full_list from range C2:C500 on m2t0
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(m2t0.getRange("C2:C500"), ExcelScript.RangeCopyType.values, false, false);
+    // Toggle auto filter on full_list
+    full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+    // Apply values filter on full_list
+    full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+    // Delete range 2:2000 on full_list
+    full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+    // Clear auto filter on full_list
+    full_list.getAutoFilter().clearCriteria();
+
+
+    // Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range A1 on full_list from range A3:A500 on m2
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(m2.getRange("A3:A500"), ExcelScript.RangeCopyType.values, false, false);
+    // Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range A1 on full_list from range C3:C500 on m2
+    full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(m2.getRange("C3:C500"), ExcelScript.RangeCopyType.values, false, false);
+  // Toggle auto filter on full_list
+  full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+  // Apply values filter on full_list
+  full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+  // Delete range 2:2000 on full_list
+  full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+  // Clear auto filter on full_list
+  full_list.getAutoFilter().clearCriteria();
+
+
+  // Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range A1 on full_list from range A3:A500 on strings
+  full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(strings.getRange("A3:A500"), ExcelScript.RangeCopyType.values, false, false);
+  // Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range A1 on full_list from range D3:D500 on strings
+  full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(strings.getRange("D3:D500"), ExcelScript.RangeCopyType.values, false, false);
+  // Toggle auto filter on full_list
+  full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+  // Apply values filter on full_list
+  full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+  // Delete range 2:2000 on full_list
+  full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+  // Clear auto filter on full_list
+  full_list.getAutoFilter().clearCriteria();
+
+
+  // Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range A1 on full_list from range A2:A500 on pv
+  full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(pv.getRange("A2:A500"), ExcelScript.RangeCopyType.values, false, false);
+  // Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range A1 on full_list from range C2:C500 on pv
+  full_list.getRange("A1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(pv.getRange("C2:C500"), ExcelScript.RangeCopyType.values, false, false);
+    // Toggle auto filter on full_list
+    full_list.getAutoFilter().apply(full_list.getRange("A:B"));
+    // Apply values filter on full_list
+    full_list.getAutoFilter().apply(full_list.getAutoFilter().getRange(), 0, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+    // Delete range 2:2000 on full_list
+    full_list.getRange("2:2000").delete(ExcelScript.DeleteShiftDirection.up);
+    // Clear auto filter on full_list
+    full_list.getAutoFilter().clearCriteria();
+
+
+
+
+
+    // Auto fit the columns of range range A:A on full_list
+    full_list.getRange("A:A").getFormat().autofitColumns();
+    // Auto fit the columns of range range B:B on full_list
+    full_list.getRange("B:B").getFormat().autofitColumns();
+    // Auto fit the columns of range range C:C on full_list
+    full_list.getRange("C:C").getFormat().autofitColumns();
+}

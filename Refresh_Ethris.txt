@@ -1,0 +1,137 @@
+function main(workbook: ExcelScript.Workbook) {
+	let coV_spike = workbook.getWorksheet("CoV_spike");
+	let coV_NP = workbook.getWorksheet("CoV_NP");
+	let coV_M = workbook.getWorksheet("CoV_M");
+	let coV_E = workbook.getWorksheet("CoV_E");
+	let coV_HE = workbook.getWorksheet("CoV_HE");
+	let vaps = workbook.getWorksheet("VAPs");
+	let reducedIDs = workbook.getWorksheet("Sent_to_Ethris");
+	// Delete range A:Z on reducedIDs
+	reducedIDs.getRange("A:Z").delete(ExcelScript.DeleteShiftDirection.left);
+	// Paste to range A1 on coV_spike from range A2:A1000 on coV_spike
+	reducedIDs.getRange("A1").copyFrom(coV_spike.getRange("A2:A1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range B1 on coV_spike from range B2:B1000 on coV_spike
+	reducedIDs.getRange("B1").copyFrom(coV_spike.getRange("B2:B1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range C1 on coV_spike from range L2:L1000 on coV_spike
+	reducedIDs.getRange("C1").copyFrom(coV_spike.getRange("L2:L1000"),ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range D1 on coV_spike from range R2:U1000 on coV_spike
+	reducedIDs.getRange("D1").copyFrom(coV_spike.getRange("R2:U1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range H1 on coV_spike from range Y2:Z1000 on coV_spike
+	reducedIDs.getRange("H1").copyFrom(coV_spike.getRange("Y2:Z1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Toggle auto filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getRange("A:I"));
+	// Apply values filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getAutoFilter().getRange(), 2, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+	// Delete range 2:999 on reducedIDs
+	reducedIDs.getRange("2:999").delete(ExcelScript.DeleteShiftDirection.up);
+	// Clear auto filter on reducedIDs
+	reducedIDs.getAutoFilter().clearCriteria();
+	// Paste to range offset by 2 row(s) and -2 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range A3:A1000 on coV_NP
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -2).copyFrom(coV_NP.getRange("A3:A1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and -1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range B3:B1000 on coV_NP
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -1).copyFrom(coV_NP.getRange("B3:B1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range K3:K1000 on coV_NP
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(coV_NP.getRange("K3:K1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range Q3:T1000 on coV_NP
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(coV_NP.getRange("Q3:T1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 3 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range X3:Y1000 on coV_NP
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 5).copyFrom(coV_NP.getRange("X3:Y1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Toggle auto filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getRange("A:I"));
+	// Apply values filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getAutoFilter().getRange(), 2, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+	// Delete range 2:999 on reducedIDs
+	reducedIDs.getRange("2:999").delete(ExcelScript.DeleteShiftDirection.up);
+	// Clear auto filter on reducedIDs
+	reducedIDs.getAutoFilter().clearCriteria();
+	// Paste to range offset by 2 row(s) and -2 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range A3:A1000 on coV_M
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -2).copyFrom(coV_M.getRange("A3:A1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and -1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range B3:B1000 on coV_M
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -1).copyFrom(coV_M.getRange("B3:B1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range K3:K1000 on coV_M
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(coV_M.getRange("K3:K1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range Q3:T1000 on coV_M
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(coV_M.getRange("Q3:T1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 3 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range X3:Y1000 on coV_M
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 5).copyFrom(coV_M.getRange("X3:Y1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Toggle auto filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getRange("A:I"));
+	// Apply values filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getAutoFilter().getRange(), 2, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+	// Delete range 2:999 on reducedIDs
+	reducedIDs.getRange("2:999").delete(ExcelScript.DeleteShiftDirection.up);
+	// Clear auto filter on reducedIDs
+	reducedIDs.getAutoFilter().clearCriteria();
+	// Paste to range offset by 2 row(s) and -2 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range A3:A1000 on coV_E
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -2).copyFrom(coV_E.getRange("A3:A1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and -1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range B3:B1000 on coV_E
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -1).copyFrom(coV_E.getRange("B3:B1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range K3:K1000 on coV_E
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(coV_E.getRange("K3:K1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range Q3:T1000 on coV_E
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(coV_E.getRange("Q3:T1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 3 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range X3:Y1000 on coV_E
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 5).copyFrom(coV_E.getRange("X3:Y1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Toggle auto filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getRange("A:I"));
+	// Apply values filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getAutoFilter().getRange(), 2, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+	// Delete range 2:999 on reducedIDs
+	reducedIDs.getRange("2:999").delete(ExcelScript.DeleteShiftDirection.up);
+	// Clear auto filter on reducedIDs
+	reducedIDs.getAutoFilter().clearCriteria();
+	// Paste to range offset by 2 row(s) and -2 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range A3:A1000 on coV_HE
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -2).copyFrom(coV_HE.getRange("A3:A1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and -1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range B3:B1000 on coV_HE
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -1).copyFrom(coV_HE.getRange("B3:B1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range K3:K1000 on coV_HE
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(coV_HE.getRange("K3:K1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range Q3:T1000 on coV_HE
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(coV_HE.getRange("Q3:T1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 3 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range X3:Y1000 on coV_HE
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 5).copyFrom(coV_HE.getRange("X3:Y1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Toggle auto filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getRange("A:I"));
+	// Apply values filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getAutoFilter().getRange(), 2, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+	// Delete range 2:999 on reducedIDs
+	reducedIDs.getRange("2:999").delete(ExcelScript.DeleteShiftDirection.up);
+	// Clear auto filter on reducedIDs
+	reducedIDs.getAutoFilter().clearCriteria();
+	// Paste to range offset by 2 row(s) and -2 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range A3:A1000 on vaps
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -2).copyFrom(vaps.getRange("A3:A1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and -1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range G3:G1000 on vaps
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, -1).copyFrom(vaps.getRange("H3:H1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 0 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range J3:J1000 on vaps
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 0).copyFrom(vaps.getRange("J3:J1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 1 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range P3:S1000 on vaps
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 1).copyFrom(vaps.getRange("P3:S1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Paste to range offset by 2 row(s) and 3 column(s) from edge range obtained by extending down from range C1 on reducedIDs from range W3:X1000 on vaps
+	reducedIDs.getRange("C1").getRangeEdge(ExcelScript.KeyboardDirection.down).getOffsetRange(2, 5).copyFrom(vaps.getRange("W3:X1000"), ExcelScript.RangeCopyType.values, false, false);
+	// Toggle auto filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getRange("A:I"));
+	// Apply values filter on reducedIDs
+	reducedIDs.getAutoFilter().apply(reducedIDs.getAutoFilter().getRange(), 2, { filterOn: ExcelScript.FilterOn.values, values: [""] });
+	// Delete range 2:999 on reducedIDs
+	reducedIDs.getRange("2:999").delete(ExcelScript.DeleteShiftDirection.up);
+	// Clear auto filter on reducedIDs
+	reducedIDs.getAutoFilter().clearCriteria();
+	// Auto fit the columns of range range A:A on reducedIDs
+	reducedIDs.getRange("A:A").getFormat().autofitColumns();
+	// Auto fit the columns of range range B:B on reducedIDs
+	reducedIDs.getRange("B:B").getFormat().autofitColumns();
+	// Auto fit the columns of range range C:C on reducedIDs
+	reducedIDs.getRange("C:C").getFormat().autofitColumns();
+	// Auto fit the columns of range range D:D on reducedIDs
+	reducedIDs.getRange("D:D").getFormat().autofitColumns();
+	// Auto fit the columns of range range E:E on reducedIDs
+	reducedIDs.getRange("E:E").getFormat().autofitColumns();
+	// Auto fit the columns of range range F:F on reducedIDs
+	reducedIDs.getRange("F:F").getFormat().autofitColumns();
+	// Auto fit the columns of range range G:G on reducedIDs
+	reducedIDs.getRange("G:G").getFormat().autofitColumns();
+	// Auto fit the columns of range range H:H on reducedIDs
+	reducedIDs.getRange("H:H").getFormat().autofitColumns();
+	// Auto fit the columns of range range I:I on reducedIDs
+	reducedIDs.getRange("I:I").getFormat().autofitColumns();
+}
